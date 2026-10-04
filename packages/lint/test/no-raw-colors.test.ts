@@ -42,6 +42,11 @@ describe("no-raw-colors", () => {
           filename: PAGE,
           code: `export const A = () => <div className="bg-transparent text-white border-black text-current" />`,
         },
+        // `none` is SVG's "paint nothing", not a color, as in fill="none" (#54).
+        {
+          filename: PAGE,
+          code: `export const A = () => <svg><circle className="fill-none stroke-primary" /><path className="stroke-none hover:fill-none" /></svg>`,
+        },
         // Non-color utilities that share a prefix.
         {
           filename: PAGE,

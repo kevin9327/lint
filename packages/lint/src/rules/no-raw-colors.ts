@@ -31,7 +31,17 @@ import { policySchema, recognitionSchema } from "./policy-schema"
 import { withSettings } from "./settings"
 import { didYouMean, nearestColorTokens, paletteColor, roleOf } from "./suggest"
 
-const NAMED = new Set(["white", "black", "transparent", "current", "inherit"])
+// Keywords a color utility accepts that no theme token stands in for.
+// `none` is SVG's "paint nothing" (fill-none, stroke-none), which the
+// attribute check already accepts as fill="none".
+const NAMED = new Set([
+  "white",
+  "black",
+  "transparent",
+  "current",
+  "inherit",
+  "none",
+])
 
 // JSX attributes that take a color directly.
 const COLOR_ATTRIBUTES = new Set([
